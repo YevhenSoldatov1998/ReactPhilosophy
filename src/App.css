@@ -27,3 +27,15 @@
     font-weight: 700;
     color: #c26c3d;
 }
+.descrTitles {
+    display: flex;
+}
+.descrTitles > span{
+    width: 50%;
+}
+.product-item{
+    display: flex;
+}
+.product-item > span {
+    width: 50%;
+}
