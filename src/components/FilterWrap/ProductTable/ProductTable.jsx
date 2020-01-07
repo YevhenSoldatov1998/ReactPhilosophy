@@ -1,25 +1,28 @@
 import React from 'react'
+import ProductTableItem from "./ProductTableItem/ProductTableItem";
+import ProductTableCategory from "./ProductTableCategory/ProductTableCategory";
+import ProductTableTitle from "./ProductTableTitle/ProductTableTitle";
 
 const ProductTable = (props) => {
+    let lastCategory = null;
+    const checkCategoryOnRepeat = (category) => {
+        if (lastCategory !== category) {
+            lastCategory = category;
+            return <ProductTableCategory category={category}/>
+        } else return false
+    };
 
     return (
         <div>
-            <span>Name</span>
-            <span>Price</span>
-
-            {    props.data &&
-                props.data.map(el => {
-                    return (
-                        <div className="product">
-                            <div className={`product-category`}>{el.category}</div>
-                            <div className={el.stocked?`product-item stocked`: `product-item `}>
-                                <span>{el.name}</span> <span>{el.price}</span>
-                            </div>
-
-                        </div>
-
-                    )
-                })
+            <ProductTableTitle/>
+            {props.data && props.data.map(item => {
+                return (
+                    <div key={item.id} className="product">
+                        {checkCategoryOnRepeat(item.category)}
+                        <ProductTableItem item={item}/>
+                    </div>
+                )
+            })
             }
         </div>
     )
