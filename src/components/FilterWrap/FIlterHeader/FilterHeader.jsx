@@ -27,7 +27,6 @@ const FilterHeader = (props) => {
     const handleAdd = () => {
         props.addNewProduct()
     }
-    debugger
     return (
         <div className={`filterHeader`}>
             <input className={`productSearch`}

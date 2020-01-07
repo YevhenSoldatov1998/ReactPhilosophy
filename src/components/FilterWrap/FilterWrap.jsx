@@ -1,7 +1,7 @@
 import React from 'react'
 import FilterHeader from "./FIlterHeader/FilterHeader";
 import ProductTable from "./ProductTable/ProductTable";
-import {getData, postData} from "../../services/axios"
+import {deletePost, getData, postData} from "../../services/axios"
 
 class FilterWrap extends React.Component {
     componentDidMount() {
@@ -27,7 +27,8 @@ class FilterWrap extends React.Component {
     addNewProduct = () => {
         const {newProductName, newProductCategory, newProductPrice, newProductStocked} = this.state;
         let lastId = this.state.data[this.state.data.length - 1].id + 1;
-        let newProductNameToUpper = newProductName.splice(0,1).toUpperCase()+newProductName.splice(1,newProductName.length-1)
+        let newProductNameToUpper =  newProductName.substr(0,1).toUpperCase() + newProductName.substr(1,newProductName.length -1 ).toLowerCase();
+
         let obj = {
             id: lastId,
             name: newProductNameToUpper,
@@ -54,7 +55,11 @@ class FilterWrap extends React.Component {
     changeProductSearch = body => this.setState({productSearch: body});
     toggleOnlyStock = () => this.setState({isOnlyStock: !this.state.isOnlyStock});
     getDataFromAPI = data => this.setState({data});
-
+    deleteProduct = (item) =>{
+        deletePost(item).then(res=>{
+            debugger
+        })
+    }
 
     render() {
         let {data, productSearch, isOnlyStock, newProductName ,  newProductCategory,  newProductPrice, newProductStocked} = this.state;
@@ -77,7 +82,8 @@ class FilterWrap extends React.Component {
                             toggleOnlyStock ={this.toggleOnlyStock}
                             changeProductSearch ={this.changeProductSearch}
                         />
-                        <ProductTable data={data.filter(item => isOnlyStock?item.stocked:item) }
+                        <ProductTable deleteProduct={this.deleteProduct}
+                                      data={data.filter(item => isOnlyStock?item.stocked:item) }
                         />
                     </> :
                     false
