@@ -9,10 +9,6 @@ export const postData = (obj) => {
 
 }
 
-export const deletePost = (obj) => {
-    return axios.delete('http://localhost:3000/data', {
-        data: { obj }
-
-    });
-
+export const deletePost = (id) => {
+    return axios.delete('http://localhost:3000/data/'+ id);
 }
