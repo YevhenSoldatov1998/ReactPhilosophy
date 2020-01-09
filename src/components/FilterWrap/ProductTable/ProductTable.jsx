@@ -19,7 +19,7 @@ const ProductTable = (props) => {
                 return (
                     <div key={item.id} className="product">
                         {checkCategoryOnRepeat(item.category)}
-                        <ProductTableItem item={item}/>
+                        <ProductTableItem deleteItems={props.deleteItems} item={item}/>
                     </div>
                 )
             })
