@@ -1,5 +1,5 @@
 .filterWrap{
-    width: 400px;
+    width: 300px;
     margin: 0 auto;
     background: #383838;
     color: #ffffff;
@@ -35,22 +35,21 @@
 }
 .product-item{
     display: flex;
-    position: relative;
 }
 .product-item > span {
     width: 50%;
 }
-.deleteItem{
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 26px;
-    width: 30px!important;
-    cursor: pointer;
-    height: 30px;
-    opacity: .7;
+.pagination{
+    font-size: 16px;
+    display: flex;
+    padding: 20px;
 }
-.deleteItem:hover{
-    opacity: 1;
+.pagination span{
+    padding: 0 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+.pagination span.active{
+    font-weight: 700;
+    color: #c26c3d;
 }
