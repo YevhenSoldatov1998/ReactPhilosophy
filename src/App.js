@@ -1,11 +1,10 @@
 import React from 'react';
 import "./App.css";
-import FilterWrap from "./components/FilterWrap/FilterWrap";
-
+import {FilterWrapContainer} from "./components/FilterWrap/FilterWrapContainer";
 function App() {
   return (
     <div className="App">
-      <FilterWrap  />
+      <FilterWrapContainer  />
     </div>
   );
 }
